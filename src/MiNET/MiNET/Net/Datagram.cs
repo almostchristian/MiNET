@@ -155,7 +155,7 @@ namespace MiNET.Net
 				}
 			}
 
-			buffer = _buf.GetBuffer();
+			buffer = _buf.ToArray();
 			return _buf.Length;
 		}
 
