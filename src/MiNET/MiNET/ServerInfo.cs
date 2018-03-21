@@ -118,12 +118,13 @@ namespace MiNET
 
 		protected virtual void CreateCounters()
 		{
-			//if (PerformanceCounterCategory.Exists("MiNET"))
-			//{
-			//	PerformanceCounterCategory.Delete("MiNET");
-			//}
+            //if (PerformanceCounterCategory.Exists("MiNET"))
+            //{
+            //	PerformanceCounterCategory.Delete("MiNET");
+            //}
 
-			if (!PerformanceCounterCategory.Exists("MiNET"))
+#if !NETCOREAPP2_0
+            if (!PerformanceCounterCategory.Exists("MiNET"))
 			{
 				CounterCreationDataCollection ccds = new CounterCreationDataCollection
 				{
@@ -138,6 +139,7 @@ namespace MiNET
 
 				PerformanceCounterCategory.Create("MiNET", "MiNET Performance Counters", PerformanceCounterCategoryType.MultiInstance, ccds);
 			}
+#endif
 		}
 	}
 }

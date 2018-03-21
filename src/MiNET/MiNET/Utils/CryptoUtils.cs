@@ -38,6 +38,7 @@ using MiNET.Utils.Skins;
 
 namespace MiNET.Utils
 {
+
 	public static class CryptoUtils
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof (CryptoUtils));
@@ -73,13 +74,15 @@ namespace MiNET.Utils
 			return asn.Concat(key.ToByteArray().Skip(8)).ToArray();
 		}
 
-		public static ECDiffieHellmanPublicKey FromDerEncoded(byte[] keyBytes)
+#if !LINUX
+        public static ECDiffieHellmanPublicKey FromDerEncoded(byte[] keyBytes)
 		{
 			var clientPublicKeyBlob = FixPublicKey(keyBytes.Skip(23).ToArray());
 
 			ECDiffieHellmanPublicKey clientKey = ECDiffieHellmanCngPublicKey.FromByteArray(clientPublicKeyBlob, CngKeyBlobFormat.EccPublicBlob);
 			return clientKey;
 		}
+#endif
 
 		private static byte[] FixPublicKey(byte[] publicKeyBlob)
 		{
@@ -169,7 +172,8 @@ namespace MiNET.Utils
 			return newKey;
 		}
 
-		public static byte[] EncodeJwt(string username, CngKey newKey, bool isEmulator)
+#if !LINUX
+        public static byte[] EncodeJwt(string username, CngKey newKey, bool isEmulator)
 		{
 			byte[] t = ImportECDsaCngKeyFromCngKey(newKey.Export(CngKeyBlobFormat.EccPrivateBlob));
 			CngKey tk = CngKey.Import(t, CngKeyBlobFormat.EccPrivateBlob);
@@ -285,6 +289,7 @@ namespace MiNET.Utils
 
 			return Encoding.UTF8.GetBytes(val);
 		}
+#endif
 
 		public static byte[] CompressJwtBytes(byte[] certChain, byte[] skinData, CompressionLevel compressionLevel)
 		{

@@ -36,8 +36,10 @@ using System.Threading.Tasks;
 using log4net;
 using MiNET.Blocks;
 using MiNET.Utils;
+#if !NETCOREAPP2_0
 using SharpAvi;
 using SharpAvi.Output;
+#endif
 
 namespace MiNET.Worlds
 {
@@ -848,7 +850,10 @@ namespace MiNET.Worlds
 
 		private void RenderVideo()
 		{
-			try
+#if NETCOREAPP2_0
+            throw new NotImplementedException();
+#else
+            try
 			{
 				if (!TrackResults) return;
 
@@ -921,7 +926,8 @@ namespace MiNET.Worlds
 			{
 				Log.Error("Rendering movie", e);
 			}
-		}
+#endif
+        }
 
 		public static byte[] ToByteArray(Image image, ImageFormat format)
 		{

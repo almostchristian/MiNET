@@ -47,7 +47,7 @@ namespace MiNET.Service
 		private static void Main(string[] args)
 		{
 			//Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
-			if (IsRunningOnMono())
+			//if (IsRunningOnMono())
 			{
 				var service = new MiNetService();
 				service.Start();
@@ -55,23 +55,24 @@ namespace MiNET.Service
 				Console.ReadLine();
 				service.Stop();
 			}
-			else
-			{
-				HostFactory.Run(host =>
-				{
-					host.Service<MiNetService>(s =>
-					{
-						s.ConstructUsing(construct => new MiNetService());
-						s.WhenStarted(service => service.Start());
-						s.WhenStopped(service => service.Stop());
-					});
-
-					host.RunAsLocalService();
-					host.SetDisplayName("MiNET Service");
-					host.SetDescription("MiNET Minecraft Pocket Edition server.");
-					host.SetServiceName("MiNET");
-				});
-			}
+			//else
+			//{
+			//	HostFactory.Run(host =>
+			//	{
+			//		host.Service<MiNetService>(s =>
+			//		{
+			//			s.ConstructUsing(construct => new MiNetService());
+			//			s.WhenStarted(service => service.Start());
+			//			s.WhenStopped(service => service.Stop());
+			//		});
+   //                 //
+   //                 host.Run();
+			//		//host.RunAsLocalService();
+			//		host.SetDisplayName("MiNET Service");
+			//		host.SetDescription("MiNET Minecraft Pocket Edition server.");
+			//		host.SetServiceName("MiNET");
+			//	});
+			//}
 		}
 
 		/// <summary>
