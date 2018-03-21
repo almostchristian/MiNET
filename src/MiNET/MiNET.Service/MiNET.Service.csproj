@@ -1,10 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Title>MiNET.Service</Title>
     <Product>MiNET.Service</Product>
+    <ApplicationIcon />
+    <StartupObject>MiNET.Service.MiNetService</StartupObject>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="log.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="server.conf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
