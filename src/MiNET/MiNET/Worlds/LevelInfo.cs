@@ -2,10 +2,11 @@ using System;
 using System.Linq.Expressions;
 using System.Reflection;
 using fNbt;
+using fNbt.Tags;
 
 namespace MiNET.Worlds
 {
-	public class LevelInfo : ICloneable
+	public class LevelInfo : System.ICloneable
 	{
 		public LevelInfo()
 		{

@@ -39,6 +39,7 @@ using AStarNavigator;
 using AStarNavigator.Algorithms;
 using AStarNavigator.Providers;
 using fNbt;
+using fNbt.Tags;
 using MiNET.Entities;
 using MiNET.Net;
 using MiNET.Utils;

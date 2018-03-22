@@ -24,7 +24,7 @@
 #endregion
 
 using System.Collections.Generic;
-using fNbt;
+using fNbt.Tags;
 
 namespace MiNET.BlockEntities
 {

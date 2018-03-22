@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.Blocks;
 using MiNET.Plugins.Attributes;

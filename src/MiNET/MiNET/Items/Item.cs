@@ -25,7 +25,7 @@
 
 using System;
 using System.Numerics;
-using fNbt;
+using fNbt.Tags;
 using MiNET.BlockEntities;
 using MiNET.Blocks;
 using MiNET.Entities;

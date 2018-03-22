@@ -33,6 +33,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading;
 using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.Crafting;
 using MiNET.Items;
@@ -1834,7 +1835,7 @@ namespace MiNET.Net
 	}
 
 	/// Base package class
-	public abstract partial class Package<T> : Package, ICloneable where T : Package<T>, new()
+	public abstract partial class Package<T> : Package, System.ICloneable where T : Package<T>, new()
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof (Package));
 

@@ -24,7 +24,7 @@
 #endregion
 
 using System;
-using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.Items;
 using MiNET.Net;

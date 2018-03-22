@@ -32,7 +32,7 @@ using System.Linq;
 using System.Net;
 using System.Numerics;
 using System.Threading;
-using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.Blocks;
 using MiNET.Crafting;

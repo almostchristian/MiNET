@@ -23,7 +23,7 @@
 
 #endregion
 
-using fNbt;
+using fNbt.Tags;
 using log4net;
 
 namespace MiNET.BlockEntities

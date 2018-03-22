@@ -34,6 +34,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.BlockEntities;
 using MiNET.Blocks;
@@ -58,7 +59,7 @@ namespace MiNET.Worlds
 		}
 	}
 
-	public class AnvilWorldProvider : IWorldProvider, ICachingWorldProvider, ICloneable
+	public class AnvilWorldProvider : IWorldProvider, ICachingWorldProvider, System.ICloneable
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof (AnvilWorldProvider));
 

@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.Entities.Projectiles;
 using MiNET.Utils;

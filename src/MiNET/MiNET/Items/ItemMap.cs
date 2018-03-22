@@ -1,5 +1,5 @@
 using System.Numerics;
-using fNbt;
+using fNbt.Tags;
 using MiNET.Utils;
 using MiNET.Worlds;
 

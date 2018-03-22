@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Concurrent;
-using fNbt;
+using fNbt.Tags;
 using MiNET.BlockEntities;
 using MiNET.Items;
 using MiNET.Utils;

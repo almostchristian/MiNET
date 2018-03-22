@@ -1,4 +1,5 @@
 using fNbt;
+using fNbt.Tags;
 using NUnit.Framework;
 
 namespace MiNET

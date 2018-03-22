@@ -33,6 +33,7 @@ using System.Linq;
 using System.Numerics;
 using System.Threading.Tasks;
 using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.BlockEntities;
 using MiNET.Blocks;

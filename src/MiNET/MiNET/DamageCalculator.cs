@@ -1,5 +1,5 @@
 using System;
-using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.Effects;
 using MiNET.Entities;
