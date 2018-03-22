@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.BlockEntities;
 using MiNET.Utils;

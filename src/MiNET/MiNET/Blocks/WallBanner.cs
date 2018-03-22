@@ -24,7 +24,7 @@
 #endregion
 
 using System.Numerics;
-using fNbt;
+using fNbt.Tags;
 using MiNET.BlockEntities;
 using MiNET.Utils;
 using MiNET.Worlds;

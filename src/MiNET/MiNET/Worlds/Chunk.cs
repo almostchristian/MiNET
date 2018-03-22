@@ -28,12 +28,13 @@ using System.Collections.Concurrent;
 using System.IO;
 using System.Linq;
 using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.Utils;
 
 namespace MiNET.Worlds
 {
-	public class Chunk : ICloneable
+	public class Chunk : System.ICloneable
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof (ChunkColumn));
 
@@ -127,8 +128,8 @@ namespace MiNET.Worlds
 			{
 				NbtBinaryWriter writer = new NbtBinaryWriter(stream, true);
 
-				writer.Write(blocks);
-				writer.Write(metadata.Data);
+				writer.Write(blocks, 0, blocks.Length);
+				writer.Write(metadata.Data, 0, metadata.Data.Length);
 				//writer.Write(skylight.Data);
 				//writer.Write(blocklight.Data);
 				_cache = stream.ToArray();

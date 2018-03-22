@@ -35,6 +35,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET;
 using MiNET.BlockEntities;

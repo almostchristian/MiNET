@@ -26,6 +26,7 @@
 using System;
 using System.IO;
 using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.Net;
 using MiNET.Utils;

@@ -28,6 +28,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using fNbt;
+using fNbt.Tags;
 using MiNET.Utils;
 using MiNET.Worlds;
 using NUnit.Framework;

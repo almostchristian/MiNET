@@ -42,6 +42,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using fNbt;
+using fNbt.Tags;
 using Jose;
 using log4net;
 using log4net.Config;

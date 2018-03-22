@@ -30,6 +30,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using fNbt;
+using fNbt.Tags;
 using log4net;
 using MiNET.Blocks;
 using MiNET.Net;
@@ -37,7 +38,7 @@ using MiNET.Utils;
 
 namespace MiNET.Worlds
 {
-	public class ChunkColumn : ICloneable
+	public class ChunkColumn : System.ICloneable
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof (ChunkColumn));
 
@@ -431,7 +432,8 @@ namespace MiNET.Worlds
 				for (int ci = 0; ci < topEmpty; ci++)
 				{
 					writer.Write((byte) 0);
-					writer.Write(chunks[ci].GetBytes());
+                    var bytes = chunks[ci].GetBytes();
+					writer.Write(bytes, 0, bytes.Length);
 					sent++;
 				}
 
@@ -441,7 +443,7 @@ namespace MiNET.Worlds
 
 				byte[] ba = new byte[512];
 				Buffer.BlockCopy(height, 0, ba, 0, 512);
-				writer.Write(ba);
+				writer.Write(ba, 0, ba.Length);
 				//Log.Debug($"Heights:\n{Package.HexDump(ba)}");
 
 				//BiomeUtils utils = new BiomeUtils();
@@ -449,7 +451,7 @@ namespace MiNET.Worlds
 
 				//InterpolateBiomes();
 
-				writer.Write(biomeId);
+				writer.Write(biomeId, 0, biomeId.Length);
 
 				//for (int i = 0; i < biomeId.Length; i++)
 				//{

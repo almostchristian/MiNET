@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using fNbt;
+using fNbt.Tags;
 using MiNET.Blocks;
 using MiNET.Items;
 using MiNET.Net;
