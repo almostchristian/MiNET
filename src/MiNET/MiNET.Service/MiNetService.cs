@@ -48,7 +48,7 @@ namespace MiNET.Service
         /// <param name="args">The arguments.</param>
         private static void Main(string[] args)
         {
-            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
+            //Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
             if (IsRunningOnMono())
             {
                 InitializeLogging();

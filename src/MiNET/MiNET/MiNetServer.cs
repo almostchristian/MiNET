@@ -188,7 +188,14 @@ namespace MiNET
 				{
 					_listener = CreateListener();
 
-					new Thread(ProcessDatagrams) {IsBackground = true}.Start(_listener);
+                    IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
+
+                    foreach (var address in localIPs)
+                    {
+                        Log.Warn($"Listening on {address.ToString()}:{Endpoint.Port.ToString()}");
+                    }
+
+                    new Thread(ProcessDatagrams) {IsBackground = true}.Start(_listener);
 				}
 
 				ServerInfo = new ServerInfo(LevelManager, _playerSessions)
@@ -236,7 +243,7 @@ namespace MiNET
 				uint IOC_IN = 0x80000000;
 				uint IOC_VENDOR = 0x18000000;
 				uint SIO_UDP_CONNRESET = IOC_IN | IOC_VENDOR | 12;
-				listener.Client.IOControl((int) SIO_UDP_CONNRESET, new byte[] {Convert.ToByte(false)}, null);
+				//listener.Client.IOControl((int) SIO_UDP_CONNRESET, new byte[] {Convert.ToByte(false)}, null);
 
 				//
 				//WARNING: We need to catch errors here to remove the code above.

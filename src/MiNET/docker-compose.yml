@@ -1,0 +1,10 @@
+version: '3.3'
+
+services:
+  minet.service:
+    image: minetservice
+    build:
+      context: .
+      dockerfile: MiNET.Service/Dockerfile
+    ports:
+      - 19132:19132/udp
