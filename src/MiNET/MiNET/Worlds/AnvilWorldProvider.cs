@@ -231,7 +231,14 @@ namespace MiNET.Worlds
 			{
 				if (_isInitialized) return;
 
-				BasePath = BasePath ?? Config.GetProperty("PCWorldFolder", "World").Trim();
+                var path = BasePath ?? Path.GetFullPath(Config.GetProperty("PCWorldFolder", "World").Trim());
+
+                if (!Directory.Exists(path))
+                {
+                    Console.WriteLine($"Creating directory '{path}'");
+                    Directory.CreateDirectory(path);
+                }
+                BasePath = path;
 
 				NbtFile file = new NbtFile();
 				var levelFileName = Path.Combine(BasePath, "level.dat");

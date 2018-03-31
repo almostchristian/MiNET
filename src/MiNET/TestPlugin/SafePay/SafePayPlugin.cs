@@ -121,8 +121,7 @@ namespace TestPlugin.SafePay
 					Number = "4242424242424242",
 					ExpirationMonth = 01,
 					ExpirationYear = 2025,
-					Cvc = "111",
-					Capture = true
+					Cvc = "111"
 				},
 			};
 

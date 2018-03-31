@@ -74,7 +74,12 @@ namespace MiNET.Utils
 			return asn.Concat(key.ToByteArray().Skip(8)).ToArray();
 		}
 
-#if !LINUX
+#if LINUX
+        public static ECDiffieHellmanPublicKey FromDerEncoded(byte[] keyBytes)
+        {
+            throw new PlatformNotSupportedException();
+        }
+#else
         public static ECDiffieHellmanPublicKey FromDerEncoded(byte[] keyBytes)
 		{
 			var clientPublicKeyBlob = FixPublicKey(keyBytes.Skip(23).ToArray());
@@ -84,7 +89,7 @@ namespace MiNET.Utils
 		}
 #endif
 
-		private static byte[] FixPublicKey(byte[] publicKeyBlob)
+        private static byte[] FixPublicKey(byte[] publicKeyBlob)
 		{
 			var keyType = new byte[] {0x45, 0x43, 0x4b, 0x33};
 			var keyLength = new byte[] {0x30, 0x00, 0x00, 0x00};
@@ -172,7 +177,17 @@ namespace MiNET.Utils
 			return newKey;
 		}
 
-#if !LINUX
+
+#if LINUX
+        public static byte[] EncodeJwt(string username, CngKey newKey, bool isEmulator)
+        {
+            throw new PlatformNotSupportedException();
+        }
+        public static byte[] EncodeSkinJwt(CngKey newKey)
+        {
+            throw new PlatformNotSupportedException();
+        }
+#else
         public static byte[] EncodeJwt(string username, CngKey newKey, bool isEmulator)
 		{
 			byte[] t = ImportECDsaCngKeyFromCngKey(newKey.Export(CngKeyBlobFormat.EccPrivateBlob));
@@ -291,7 +306,7 @@ namespace MiNET.Utils
 		}
 #endif
 
-		public static byte[] CompressJwtBytes(byte[] certChain, byte[] skinData, CompressionLevel compressionLevel)
+        public static byte[] CompressJwtBytes(byte[] certChain, byte[] skinData, CompressionLevel compressionLevel)
 		{
 			using (MemoryStream stream = MiNetServer.MemoryStreamManager.GetStream())
 			{
