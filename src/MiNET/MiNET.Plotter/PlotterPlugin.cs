@@ -42,6 +42,7 @@ namespace MiNET.Plotter
 
 		public void Configure(MiNetServer server)
 		{
+            Log.Info($"Configuring {nameof(PlotterPlugin)}");
 			server.LevelManager = new PlotterLevelManager();
 			server.LevelManager.LevelCreated += (sender, args) =>
 			{

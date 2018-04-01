@@ -106,7 +106,11 @@ namespace MiNET.Plugins
 									PluginAttribute pluginAttribute = Attribute.GetCustomAttribute(type, typeof (PluginAttribute), true) as PluginAttribute;
 									if (pluginAttribute != null)
 									{
-										if (!Config.GetProperty(pluginAttribute.PluginName + ".Enabled", true)) continue;
+                                        if (!Config.GetProperty(pluginAttribute.PluginName + ".Enabled", true))
+                                        {
+                                            Log.Info($"Plugin {pluginAttribute.PluginName} is disabled in configuration. Ignored.");
+                                            continue;
+                                        }
 									}
 								}
 								var ctor = type.GetConstructor(Type.EmptyTypes);
