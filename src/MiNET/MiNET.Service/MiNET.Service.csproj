@@ -8,6 +8,7 @@
     <ApplicationIcon />
     <StartupObject>MiNET.Service.MiNetService</StartupObject>
     <NoWin32Manifest>true</NoWin32Manifest>
+    <Configurations>Debug;Release;Docker</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

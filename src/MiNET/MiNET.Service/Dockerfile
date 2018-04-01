@@ -9,10 +9,10 @@ COPY MiNET/MiNET.csproj MiNET/
 RUN dotnet restore -nowarn:msb3202,nu1503
 COPY . .
 WORKDIR /src/MiNET.Service
-RUN dotnet build -c Release -o /app
+RUN dotnet build -c Docker -o /app
 
 FROM build AS publish
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish -c Docker -o /app
 
 
 FROM base AS final
