@@ -36,7 +36,7 @@ using System.Threading.Tasks;
 using log4net;
 using MiNET.Blocks;
 using MiNET.Utils;
-#if !NETCOREAPP2_0
+#if !NETSTANDARD2_0
 using SharpAvi;
 using SharpAvi.Output;
 #endif
@@ -850,7 +850,7 @@ namespace MiNET.Worlds
 
 		private void RenderVideo()
 		{
-#if NETCOREAPP2_0
+#if NETSTANDARD2_0
             throw new NotImplementedException();
 #else
             try

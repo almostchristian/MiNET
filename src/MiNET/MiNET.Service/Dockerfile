@@ -1,6 +1,5 @@
 FROM microsoft/dotnet:2.0-runtime AS base
 WORKDIR /app
-EXPOSE 19132/udp
 
 FROM microsoft/dotnet:2.0-sdk AS build
 WORKDIR /src
@@ -15,7 +14,10 @@ RUN dotnet build -c Release -o /app
 FROM build AS publish
 RUN dotnet publish -c Release -o /app
 
+
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
+EXPOSE 19132/udp
+VOLUME /data
 ENTRYPOINT ["dotnet", "MiNET.Service.dll"]

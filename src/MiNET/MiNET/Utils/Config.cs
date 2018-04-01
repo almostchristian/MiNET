@@ -47,27 +47,43 @@ namespace MiNET.Utils
 				string username = Environment.UserName;
 
 				string fileContents = string.Empty;
-				string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-				if (path != null)
+#if DOCKER
+                string path = "/data";
+#else
+                string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+#endif
+                if (path != null)
 				{
 					var configFilePath = Path.Combine(path, $"server.{username}.conf");
-					Log.Info($"Trying to load config-file {configFilePath}");
 					if (File.Exists(configFilePath))
 					{
+                        Log.Info($"Loading config-file {configFilePath}");
 						fileContents = File.ReadAllText(configFilePath);
 					}
 					else
-					{
-						configFilePath = Path.Combine(path, ConfigFileName);
+                    {
+                        Log.Info($"Failed to load config-file {configFilePath}");
+                        configFilePath = Path.Combine(path, ConfigFileName);
 
-						Log.Info($"Trying to load config-file {configFilePath}");
 
 						if (File.Exists(configFilePath))
 						{
+                            Log.Info($"Loading config-file {configFilePath}");
 							fileContents = File.ReadAllText(configFilePath);
 						}
+                        else
+                        {
+                            Log.Warn($"Failed to find config file {configFilePath}");
+#if DOCKER
+                            Log.Warn($"Copying default config file {configFilePath}");
+                            string defaultconfigpath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConfigFileName);
+                            File.Copy(defaultconfigpath, configFilePath);
+
+                            Log.Info($"Loading config-file {configFilePath}");
+                            fileContents = File.ReadAllText(configFilePath);
+#endif
+                        }
 					}
-					Log.Info($"Loading config-file {configFilePath}");
 				}
 
 				LoadValues(fileContents);

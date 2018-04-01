@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using log4net;
 using log4net.Config;
@@ -49,6 +50,11 @@ namespace MiNET.Service
         private static void Main(string[] args)
         {
             //Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
+            if (args != null && args.Any())
+            {
+                Utils.Config.ConfigFileName = args.First();
+            }
+
             if (IsRunningOnMono())
             {
                 InitializeLogging();

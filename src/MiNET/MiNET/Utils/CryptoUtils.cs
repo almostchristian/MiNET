@@ -74,7 +74,7 @@ namespace MiNET.Utils
 			return asn.Concat(key.ToByteArray().Skip(8)).ToArray();
 		}
 
-#if LINUX
+#if NETSTANDARD2_0
         public static ECDiffieHellmanPublicKey FromDerEncoded(byte[] keyBytes)
         {
             throw new PlatformNotSupportedException();
@@ -178,7 +178,7 @@ namespace MiNET.Utils
 		}
 
 
-#if LINUX
+#if NETSTANDARD2_0
         public static byte[] EncodeJwt(string username, CngKey newKey, bool isEmulator)
         {
             throw new PlatformNotSupportedException();

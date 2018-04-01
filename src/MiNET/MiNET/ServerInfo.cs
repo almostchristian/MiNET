@@ -123,7 +123,7 @@ namespace MiNET
             //	PerformanceCounterCategory.Delete("MiNET");
             //}
 
-#if !NETCOREAPP2_0
+#if !NETSTANDARD2_0
             if (!PerformanceCounterCategory.Exists("MiNET"))
 			{
 				CounterCreationDataCollection ccds = new CounterCreationDataCollection
@@ -140,6 +140,6 @@ namespace MiNET
 				PerformanceCounterCategory.Create("MiNET", "MiNET Performance Counters", PerformanceCounterCategoryType.MultiInstance, ccds);
 			}
 #endif
-		}
-	}
+        }
+    }
 }

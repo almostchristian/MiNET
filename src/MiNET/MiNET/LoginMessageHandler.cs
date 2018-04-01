@@ -231,15 +231,15 @@ namespace MiNET
 							Log.Debug("Derived Key is ok");
 						}
 
-						//if (Log.IsDebugEnabled)
-						//{
-						//	Log.Debug($"x5u cert (string): {x5u}");
-						//	ECDiffieHellmanPublicKey publicKey = CryptoUtils.FromDerEncoded(x5u.DecodeBase64Url());
-						//	Log.Debug($"Cert:\n{publicKey.ToXmlString()}");
-						//}
+                        //if (Log.IsDebugEnabled)
+                        //{
+                        //	Log.Debug($"x5u cert (string): {x5u}");
+                        //	ECDiffieHellmanPublicKey publicKey = CryptoUtils.FromDerEncoded(x5u.DecodeBase64Url());
+                        //	Log.Debug($"Cert:\n{publicKey.ToXmlString()}");
+                        //}
 
-#if LINUX
-						CertificateData data = JWT.Payload<CertificateData>(token.ToString());
+#if NETSTANDARD2_0
+                        CertificateData data = JWT.Payload<CertificateData>(token.ToString());
 #else
 						ECDiffieHellmanCngPublicKey newKey = (ECDiffieHellmanCngPublicKey) CryptoUtils.FromDerEncoded(x5u.DecodeBase64Url());
 						CertificateData data = JWT.Decode<CertificateData>(token.ToString(), newKey.Import());
@@ -297,8 +297,8 @@ namespace MiNET
 							UseEncryption = Config.GetProperty("UseEncryptionForAll", false) || (Config.GetProperty("UseEncryption", true) && !string.IsNullOrWhiteSpace(_playerInfo.CertificateData.ExtraData.Xuid)),
 						};
 
-#if LINUX
-						_session.CryptoContext.UseEncryption = false;
+#if NETSTANDARD2_0
+                        _session.CryptoContext.UseEncryption = false;
 #else
 						if (_session.CryptoContext.UseEncryption)
 						{
