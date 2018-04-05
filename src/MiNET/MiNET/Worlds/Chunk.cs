@@ -130,8 +130,8 @@ namespace MiNET.Worlds
 
 				writer.Write(blocks, 0, blocks.Length);
 				writer.Write(metadata.Data, 0, metadata.Data.Length);
-				//writer.Write(skylight.Data);
-				//writer.Write(blocklight.Data);
+				writer.Write(skylight.Data);
+				writer.Write(blocklight.Data);
 				_cache = stream.ToArray();
 			}
 

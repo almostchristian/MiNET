@@ -118,12 +118,12 @@ namespace MiNET
 
 		protected virtual void CreateCounters()
 		{
-            //if (PerformanceCounterCategory.Exists("MiNET"))
-            //{
-            //	PerformanceCounterCategory.Delete("MiNET");
-            //}
-
 #if !NETSTANDARD2_0
+            if (PerformanceCounterCategory.Exists("MiNET"))
+            {
+            	PerformanceCounterCategory.Delete("MiNET");
+            }
+
             if (!PerformanceCounterCategory.Exists("MiNET"))
 			{
 				CounterCreationDataCollection ccds = new CounterCreationDataCollection
