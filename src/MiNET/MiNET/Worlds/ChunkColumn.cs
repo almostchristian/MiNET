@@ -432,9 +432,8 @@ namespace MiNET.Worlds
 				for (int ci = 0; ci < topEmpty; ci++)
 				{
 					writer.Write((byte) 0);
-                    var bytes = chunks[ci].GetBytes();
-					writer.Write(bytes, 0, bytes.Length);
-					sent++;
+                    writer.Write(chunks[ci].GetBytes());
+                    sent++;
 				}
 
 				//Log.Debug($"Saved sending {16 - sent} chunks");
@@ -443,7 +442,7 @@ namespace MiNET.Worlds
 
 				byte[] ba = new byte[512];
 				Buffer.BlockCopy(height, 0, ba, 0, 512);
-				writer.Write(ba, 0, ba.Length);
+				writer.Write(ba);
 				//Log.Debug($"Heights:\n{Package.HexDump(ba)}");
 
 				//BiomeUtils utils = new BiomeUtils();
@@ -451,7 +450,7 @@ namespace MiNET.Worlds
 
 				//InterpolateBiomes();
 
-				writer.Write(biomeId, 0, biomeId.Length);
+				writer.Write(biomeId);
 
 				//for (int i = 0; i < biomeId.Length; i++)
 				//{

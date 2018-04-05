@@ -451,8 +451,8 @@ namespace MiNET.Net
 					Write(record.ClientUuid);
 					WriteSignedVarLong(record.EntityId);
 					Write(record.DisplayName ?? record.Username);
-					//Write(record.DisplayName ?? record.Username); // third party name?
-					//WriteSignedVarInt(record.PlayerInfo.DeviceOS); // platform?
+					Write(record.DisplayName ?? record.Username); // third party name?
+					WriteSignedVarInt(record.PlayerInfo.DeviceOS); // platform?
 					Write(record.Skin, record?.PlayerInfo?.CertificateData?.ExtraData?.Xuid);
 				}
 			}

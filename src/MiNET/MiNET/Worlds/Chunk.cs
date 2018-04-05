@@ -128,8 +128,8 @@ namespace MiNET.Worlds
 			{
 				NbtBinaryWriter writer = new NbtBinaryWriter(stream, true);
 
-				writer.Write(blocks, 0, blocks.Length);
-				writer.Write(metadata.Data, 0, metadata.Data.Length);
+				writer.Write(blocks);
+				writer.Write(metadata.Data);
 				writer.Write(skylight.Data);
 				writer.Write(blocklight.Data);
 				_cache = stream.ToArray();
