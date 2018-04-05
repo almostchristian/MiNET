@@ -243,12 +243,13 @@ namespace MiNET
 				uint IOC_IN = 0x80000000;
 				uint IOC_VENDOR = 0x18000000;
 				uint SIO_UDP_CONNRESET = IOC_IN | IOC_VENDOR | 12;
-				//listener.Client.IOControl((int) SIO_UDP_CONNRESET, new byte[] {Convert.ToByte(false)}, null);
-
-				//
-				//WARNING: We need to catch errors here to remove the code above.
-				//
-			}
+#if !DOCKER
+                listener.Client.IOControl((int) SIO_UDP_CONNRESET, new byte[] {Convert.ToByte(false)}, null);
+#endif
+                //
+                //WARNING: We need to catch errors here to remove the code above.
+                //
+            }
 
 			//_cleanerTimer = new Timer(Update, null, 10, Timeout.Infinite);
 			return listener;
